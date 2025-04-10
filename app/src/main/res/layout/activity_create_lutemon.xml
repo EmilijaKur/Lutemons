@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="432dp"
+        android:layout_height="40dp"
+        android:background="#901F1F"
+        android:padding="10dp"
+        android:paddingStart="150dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="100dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="Create Lutemon"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/enterName"
+        android:layout_width="397dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter Lutemon Name"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="379dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Select Lutemon color:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterName" />
+
+    <RadioGroup
+        android:id="@+id/colorGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <RadioButton
+            android:id="@+id/whiteRdBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="White (ATK: 5, DEF: 4, HP: 20)"/>
+
+        <RadioButton
+            android:id="@+id/greenRdBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green (ATK: 6, DEF: 3, HP: 19)"/>
+
+        <RadioButton
+            android:id="@+id/pinkRdBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pink (ATK: 7, DEF: 2, HP: 18)"/>
+        <RadioButton
+            android:id="@+id/orangeRdBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orange (ATK: 8, DEF: 1, HP: 17)"/>
+
+        <RadioButton
+            android:id="@+id/blackRdBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Black (ATK: 9, DEF: 0, HP: 16)"/>
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/CreationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="5dp"
+        android:background="#8F1F1F"
+        android:paddingLeft="24dp"
+        android:paddingTop="4dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="4dp"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

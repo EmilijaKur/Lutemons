@@ -1,6 +1,8 @@
 package com.example.lutemons;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    Button btnCreate, btnTrain, btnBattle, btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +23,12 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        btnCreate=findViewById(R.id.CreateButton);
+        btnTrain=findViewById(R.id.TrainButton);
+        btnBattle=findViewById(R.id.BattleButton);
+        btnHome=findViewById(R.id.HomeButton);
+
+        btnCreate.setOnClickListener(v -> startActivity(new Intent(this, CreateLutemonActivity.class)));
     }
 }
