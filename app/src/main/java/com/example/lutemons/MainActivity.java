@@ -30,5 +30,7 @@ public class MainActivity extends AppCompatActivity {
         btnHome=findViewById(R.id.HomeButton);
 
         btnCreate.setOnClickListener(v -> startActivity(new Intent(this, CreateLutemonActivity.class)));
+        btnHome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
+
     }
 }

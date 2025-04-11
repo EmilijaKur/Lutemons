@@ -25,6 +25,10 @@
         <activity
             android:name=".CreateLutemonActivity"
             android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false"/>
     </application>
+
 
 </manifest>

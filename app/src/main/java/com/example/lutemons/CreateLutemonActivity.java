@@ -1,4 +1,5 @@
 package com.example.lutemons;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -11,7 +12,7 @@ import com.example.lutemons.model.*;
 public class CreateLutemonActivity extends AppCompatActivity {
     EditText enterName;
     RadioGroup colorGroup;
-    Button btnCreate;
+    Button btnCreate, btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -19,43 +20,38 @@ public class CreateLutemonActivity extends AppCompatActivity {
         enterName=findViewById(R.id.enterName);
         colorGroup=findViewById(R.id.colorGroup);
         btnCreate=findViewById(R.id.CreationButton);
+        btnBack = findViewById(R.id.BackButton);
 
-        btnCreate.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                String name=enterName.getText().toString();
-                int selectedId=colorGroup.getCheckedRadioButtonId();
-                RadioButton selectedColor=findViewById(selectedId);
-
-                Lutemon lutemon=null;
-                String color=selectedColor.getText().toString();
-
-                switch (color.toLowerCase()){
-                    case "white":
-                        lutemon=new White(name);
-                        break;
-                    case "green":
-                        lutemon=new Green(name);
-                        break;
-                    case "pink":
-                        lutemon=new Pink(name);
-                        break;
-                    case "orange":
-                        lutemon=new Orange(name);
-                        break;
-                    case "black":
-                        lutemon=new Black(name);
-                        break;
-
-                }
-                if(lutemon!=null){
-                    Storage.getInstance().addLutemon(lutemon);
-                    Toast.makeText(CreateLutemonActivity.this, "Lutemon created!", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
+        btnCreate.setOnClickListener(view -> {
+            String name=enterName.getText().toString();
+            int selectedId=colorGroup.getCheckedRadioButtonId();
+            if (name.isEmpty()||selectedId==-1){
+                Toast.makeText(this, "Please enter a name and select a color", Toast.LENGTH_SHORT).show();
+            }
+            RadioButton selectedColor=findViewById(selectedId);
+            Lutemon lutemon=null;
+            String color=selectedColor.getText().toString();
+            if (selectedId == R.id.whiteRdBtn) {
+                lutemon = new White(name);
+            } else if (selectedId == R.id.greenRdBtn) {
+                lutemon = new Green(name);
+            } else if (selectedId == R.id.pinkRdBtn) {
+                lutemon = new Pink(name);
+            } else if (selectedId == R.id.orangeRdBtn) {
+                lutemon = new Orange(name);
+            } else if (selectedId == R.id.blackRdBtn) {
+                lutemon = new Black(name);
+            }
+            if(lutemon!=null){
+                Storage.getInstance().addLutemon(lutemon);
+                Toast.makeText(CreateLutemonActivity.this, "Lutemon created!", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(CreateLutemonActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         });
+        btnBack.setOnClickListener(v->finish());//closes the activity
 
     }
 

@@ -14,28 +14,28 @@
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="#D7605F"
         android:text="Create Lutemons"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toStartOf="@+id/TrainButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/TrainButton"
         android:layout_width="150dp"
         android:layout_height="70dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="160dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="#D7605F"
         android:text="Train Lutemons"
         app:cornerRadius="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/CreateButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <Button
         android:id="@+id/BattleButton"
@@ -64,4 +64,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/BattleButton"
         app:layout_constraintTop_toBottomOf="@+id/TrainButton" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="413dp"
+        android:layout_height="181dp"
+        android:paddingStart="90dp"
+        android:paddingTop="75dp"
+        android:text="LUTEMONS"
+        android:textColorHighlight="#020101"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

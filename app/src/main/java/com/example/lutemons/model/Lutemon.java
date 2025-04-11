@@ -16,6 +16,8 @@ public class Lutemon {
     }
     public String getName() { return name; }
     public int getHealth() { return health; }
+    public int getMaxHealth() { return maxHealth; }
+
     public int getExperience() { return experience; }
     public int getDefense() { return defense; }
     public String getColor() { return color; }
