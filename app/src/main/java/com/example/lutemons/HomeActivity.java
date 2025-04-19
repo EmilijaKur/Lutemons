@@ -7,13 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lutemons.adapter.LutemonAdapter;
+import com.example.lutemons.adapter.HomeLutemonAdapter;
 import com.example.lutemons.logic.Storage;
-import com.example.lutemons.model.Lutemon;
 
 public class HomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    LutemonAdapter adapter;
+    HomeLutemonAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         recyclerView = findViewById(R.id.recyclerLutemons);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new LutemonAdapter(Storage.getInstance().getAllLutemons());
+        adapter = new HomeLutemonAdapter(this, Storage.getInstance().getLutemonsByLocation("home"));
         recyclerView.setAdapter(adapter);
         Button btnBack = findViewById(R.id.buttonBackHome);
         btnBack.setOnClickListener(v -> finish());

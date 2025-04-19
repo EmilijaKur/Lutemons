@@ -1,5 +1,4 @@
 package com.example.lutemons.logic;
-
 import com.example.lutemons.model.Lutemon;
 
 import java.util.ArrayList;
@@ -23,7 +22,19 @@ public class Storage {
     public ArrayList<Lutemon> getAllLutemons(){
         return new ArrayList<>(lutemonMap.values());
     }
+    public ArrayList<Lutemon> getLutemonsByLocation(String location) {
+        ArrayList<Lutemon> result = new ArrayList<>();
+        for (Lutemon l : lutemonMap.values()) {
+            if (l.getLocation().equals(location)) {
+                result.add(l);
+            }
+        }
+        return result;
+    }
     public Lutemon getLutemon(int id){
         return lutemonMap.get(id);
+    }
+    public void removeLutemon(int id) {
+        lutemonMap.remove(id);
     }
 }

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnCreate.setOnClickListener(v -> startActivity(new Intent(this, CreateLutemonActivity.class)));
         btnHome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
+        btnTrain.setOnClickListener(v -> startActivity(new Intent(this, TrainActivity.class)));
 
     }
 }
