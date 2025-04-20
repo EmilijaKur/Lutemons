@@ -5,6 +5,7 @@ public class Lutemon {
     protected int attack, defense, experience, health, maxHealth, id;
     protected String location;
     private static int idCounter=0;
+    //constructor
     public Lutemon(String name, String color, int attack, int defense, int maxHealth){
         this.name=name;
         this.color=color;
@@ -16,6 +17,7 @@ public class Lutemon {
         this.id=idCounter++;
         this.location = "home";
     }
+    //Getters and a setter
     public String getName() { return name; }
     public int getHealth() { return health; }
     public int getMaxHealth() { return maxHealth; }
@@ -36,22 +38,21 @@ public class Lutemon {
 
     public void setLocation(String location) {this.location = location;}
 
-    /* attack can be counted in battle class
-    int damage = Math.max(0, attacker.getAttackPower() - defender.defense);
-    public void attack(){
-
-    }*/
+    //Calculates damage and subtracts it from Lutemon HP
     public void defend(Lutemon attacker){
         int damage=(attacker.getAttackPower()-defense);
         this.health=this.health-damage;
 
     }
+    //check if Lutemon is still alive
     public boolean isAlive(){
         return health>0;
     }
+    //set health points to maximum
     public void restoreHealth(){
         this.health=this.maxHealth;
     }
+    //Increase experience points
     public void gainXP(){
         this.experience=this.experience+1;
     }

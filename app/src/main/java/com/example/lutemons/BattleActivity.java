@@ -38,21 +38,21 @@ public class BattleActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnAttack);
         btnBack = findViewById(R.id.btnBack);
 
-
+        // Retrieve Lutemon names passed from HomeActivity
         String lutemon1Name = getIntent().getStringExtra("lutemon1_name");
         String lutemon2Name = getIntent().getStringExtra("lutemon2_name");
 
-
+        // Get actual Lutemon objects from Storage
         lutemon1 = findLutemonByName(lutemon1Name);
         lutemon2 = findLutemonByName(lutemon2Name);
 
         if (lutemon1 != null && lutemon2 != null) {
-            // Set name and stats
+            // Set name and health points
             name1.setText(lutemon1.getName());
             name2.setText(lutemon2.getName());
             hp1.setText("HP: " + lutemon1.getHealth() + "/" + lutemon1.getMaxHealth());
             hp2.setText("HP: " + lutemon2.getHealth() + "/" + lutemon2.getMaxHealth());
-
+            //set image with frame background, that changes colors accordingly to Lutemon color
             image1.setImageResource(R.drawable.lutemon);
             image2.setImageResource(R.drawable.lutemon);
             bg1.setBackgroundResource(getFrameResource(lutemon1.getColor()));
@@ -61,19 +61,22 @@ public class BattleActivity extends AppCompatActivity {
             battle = new Battle(lutemon1, lutemon2);
             battleLog.setText("Battle between " + lutemon1.getColor() + " (" + lutemon1.getName() + ") and "
                     + lutemon2.getColor() + " (" + lutemon2.getName() + ") begins!\n");
-
+            // Start turn-based battle
             btnStart.setOnClickListener(v -> {
                 String result = battle.executeTurn();
                 battleLog.append(result);
+                // Update health points display
                 int hp1Current = Math.max(0, lutemon1.getHealth());
                 int hp2Current = Math.max(0, lutemon2.getHealth());
                 hp1.setText("HP: " + hp1Current + "/" + lutemon1.getMaxHealth());
                 hp2.setText("HP: " + hp2Current + "/" + lutemon2.getMaxHealth());
+                // Disable button when battle ends
                 if (!battle.isBattleOngoing()) {
                     btnStart.setEnabled(false);
                 }
             });
         }
+        // Return to main screen
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(BattleActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -81,7 +84,7 @@ public class BattleActivity extends AppCompatActivity {
             finish();
         });
     }
-
+    // Search for a Lutemon in storage by name
     private Lutemon findLutemonByName(String name) {
         for (Lutemon l : Storage.getInstance().getAllLutemons()) {
             if (l.getName().equals(name)) {
@@ -90,7 +93,7 @@ public class BattleActivity extends AppCompatActivity {
         }
         return null;
     }
-
+    // Get correct frame background based on Lutemon color
     private int getFrameResource(String color) {
         switch (color.toLowerCase()) {
             case "white": return R.drawable.lutemon_frame_white;

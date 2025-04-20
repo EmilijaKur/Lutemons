@@ -23,16 +23,19 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.LutemonV
     @NonNull
     @Override
     public LutemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+        // Inflate individual Lutemon item layout
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lutemon, parent, false);
         return new LutemonViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull LutemonViewHolder holder, int position){
         Lutemon l=lutemons.get(position);
+        // Set Lutemon name and stats
         holder.txtName.setText(l.getName());
         holder.txtStats.setText("ATK: " + l.getAttackPower() + " | DEF: " + l.getDefense() +
                 "\nHealth Points: " + l.getHealth() + "/" + l.getMaxHealth() +
                 " \nXP: " + l.getExperience());
+        // Set background color based on Lutemon's color
         switch (l.getColor().toLowerCase()){
             case "white":
                 holder.itemBackground.setBackgroundColor(0xFFEDEDED);
@@ -53,6 +56,7 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.LutemonV
                 holder.itemBackground.setBackgroundColor(0xFFFFFFFF);
 
         }
+        // Set default Lutemon image
         holder.imgLutemon.setImageResource(R.drawable.lutemon);
     }
     @Override
@@ -63,6 +67,7 @@ public class LutemonAdapter extends RecyclerView.Adapter<LutemonAdapter.LutemonV
         TextView txtName, txtStats;
         View itemBackground;
         ImageView imgLutemon;
+        // ViewHolder for Lutemon item
         public LutemonViewHolder(@NonNull View itemView){
             super(itemView);
             txtName=itemView.findViewById(R.id.txtLutemonName);

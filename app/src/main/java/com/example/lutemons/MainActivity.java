@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     Button btnCreate, btnTrain, btnBattle, btnHome;
+    // ImageViews for icons
     ImageView imgBattle, imgHome, imgTrain, imgCreate;
 
     @Override
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        // Bind UI components to variables
         btnCreate=findViewById(R.id.CreateButton);
         btnTrain=findViewById(R.id.TrainButton);
         btnBattle=findViewById(R.id.BattleButton);
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         imgBattle=findViewById(R.id.imageView4);
         imgHome=findViewById(R.id.imageView5);
         imgTrain=findViewById(R.id.imageView3);
-
+        // Navigate to each respective activity
         btnCreate.setOnClickListener(v -> startActivity(new Intent(this, CreateLutemonActivity.class)));
         btnHome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));
         btnTrain.setOnClickListener(v -> startActivity(new Intent(this, TrainActivity.class)));

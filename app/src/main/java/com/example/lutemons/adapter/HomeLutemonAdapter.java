@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.ViewHolder> {
     private ArrayList<Lutemon> lutemons;
     private Context context;
-
+    //Constructor
     public HomeLutemonAdapter(Context context, ArrayList<Lutemon> lutemons) {
         this.context = context;
         this.lutemons = lutemons;
@@ -32,6 +32,7 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the item layout
         View view = LayoutInflater.from(context).inflate(R.layout.item_lutemon, parent, false);
         return new ViewHolder(view);
     }
@@ -39,10 +40,12 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Lutemon l = lutemons.get(position);
+        // Set name and stats
         holder.txtName.setText(l.getName());
         holder.txtStats.setText("ATK: " + l.getAttackPower() + " | DEF: " + l.getDefense() +
                 "\nHealth Points: " + l.getHealth() + "/" + l.getMaxHealth() +
                 "\nXP: " + l.getExperience());
+        // Change background color based on Lutemon color
         switch (l.getColor().toLowerCase()){
             case "white":
                 holder.itemBackground.setBackgroundColor(0xFFEDEDED);
@@ -63,19 +66,21 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
                 holder.itemBackground.setBackgroundColor(0xFFFFFFFF);
 
         }
-
+        // Set default image
         holder.imgLutemon.setImageResource(R.drawable.lutemon);
 
-
+        // Hide sendHome button if present in layout
         View btnSendHome = holder.itemView.findViewById(R.id.btnSendHome);
         if (btnSendHome != null) {
             btnSendHome.setVisibility(View.GONE);
         }
+        // Only show moveToBattle if Lutemon is at home
         holder.btnMoveToBattle.setVisibility(
                 l.getLocation().equals("home") ? View.VISIBLE : View.GONE
         );
-
+        // Logic depending on current location
         if (l.getLocation().equals("home")) {
+            // Button to move to training
             holder.actionButton.setText("Move to Training");
             holder.actionButton.setOnClickListener(v -> {
 
@@ -89,7 +94,7 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
 
                 }
                 });
-            //holder.btnMoveToBattle.setVisibility(View.VISIBLE);
+            // Button to move to battle arena
             holder.btnMoveToBattle.setOnClickListener(v -> {
 
                 int currentPosition = holder.getAdapterPosition();
@@ -106,6 +111,7 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
 
 
         } else if (l.getLocation().equals("training")) {
+            // If in training, allow training action
             holder.actionButton.setText("Train");
             holder.actionButton.setOnClickListener(v -> {
 
@@ -113,6 +119,7 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
                 Toast.makeText(context, l.getName() + " trained! XP: " + l.getExperience(), Toast.LENGTH_SHORT).show();
                 notifyItemChanged(position); // update just this item
             });
+            // Hide "Move to Battle" button in training activity
             holder.btnMoveToBattle.setVisibility(View.GONE);
         }
 
@@ -128,9 +135,10 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
         ImageView imgLutemon;
         View itemBackground;
         Button actionButton, btnMoveToBattle;
-
+        //Viewholder constructer
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            // Get references to the views in the layout
             txtName = itemView.findViewById(R.id.txtLutemonName);
             txtStats = itemView.findViewById(R.id.txtLutemonStats);
             imgLutemon = itemView.findViewById(R.id.imageLutemon);

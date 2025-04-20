@@ -25,12 +25,13 @@ public class TrainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerTrainingLutemons);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        // Populate RecyclerView with Lutemons in training
         ArrayList<Lutemon> trainingLutemons = Storage.getInstance().getLutemonsByLocation("training");
         adapter = new TrainingLutemonAdapter(this, trainingLutemons);
         recyclerView.setAdapter(adapter);
 
         btnBack = findViewById(R.id.buttonBackTraining);
+        // Return to main screen
         btnBack.setOnClickListener(v -> finish());
     }
 }
