@@ -103,14 +103,7 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
 
                 }
                 });
-            /*ArrayList<Lutemon> battleLutemons= Storage.getInstance().getLutemonsByLocation("battle");
-            if(battleLutemons.size()==2){
-                Intent intent=new Intent(context, BattleActivity.class);
-                intent.putExtra("lutemon1_name", battleLutemons.get(0).getName());
-                intent.putExtra("lutemon2_name", battleLutemons.get(1).getName());
-                context.startActivity(intent);
 
-            }*/
 
         } else if (l.getLocation().equals("training")) {
             holder.actionButton.setText("Train");
@@ -122,15 +115,7 @@ public class HomeLutemonAdapter extends RecyclerView.Adapter<HomeLutemonAdapter.
             });
             holder.btnMoveToBattle.setVisibility(View.GONE);
         }
-        /*else if (l.getLocation().equals("training")) {
-            holder.actionButton.setText("Train");
-            holder.actionButton.setOnClickListener(v -> {
-                l.gainXP();
-                Toast.makeText(context, l.getName() + " trained! XP: " + l.getExperience(), Toast.LENGTH_SHORT).show();
-                notifyItemChanged(position); // update just this item
-            });
-            holder.btnMoveToBattle.setVisibility(View.GONE);
-        }*/
+
     }
 
     @Override

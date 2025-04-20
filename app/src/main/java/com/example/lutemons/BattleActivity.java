@@ -25,7 +25,7 @@ public class BattleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
 
-        // Initialize views
+
         name1 = findViewById(R.id.nameLutemon1);
         name2 = findViewById(R.id.nameLutemon2);
         hp1 = findViewById(R.id.hpLutemon1);
@@ -38,11 +38,11 @@ public class BattleActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnAttack);
         btnBack = findViewById(R.id.btnBack);
 
-        // Get Lutemon names from Intent
+
         String lutemon1Name = getIntent().getStringExtra("lutemon1_name");
         String lutemon2Name = getIntent().getStringExtra("lutemon2_name");
 
-        // Fetch Lutemon objects from Storage
+
         lutemon1 = findLutemonByName(lutemon1Name);
         lutemon2 = findLutemonByName(lutemon2Name);
 
@@ -78,7 +78,7 @@ public class BattleActivity extends AppCompatActivity {
             Intent intent = new Intent(BattleActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            finish(); // Optional: close current BattleActivity
+            finish();
         });
     }
 

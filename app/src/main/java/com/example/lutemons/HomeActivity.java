@@ -35,8 +35,7 @@ public class HomeActivity extends AppCompatActivity {
             ArrayList<Lutemon> battleLutemons = Storage.getInstance().getLutemonsByLocation("battle");
             if (battleLutemons.size() == 2) {
 
-                //adapter=new HomeLutemonAdapter(this, new ArrayList<>(Storage.getInstance().getLutemonsByLocation("home")));
-                //recyclerView.setAdapter(adapter);
+
 
                 Intent intent = new Intent(this, BattleActivity.class);
                 intent.putExtra("lutemon1_name", battleLutemons.get(0).getName());
