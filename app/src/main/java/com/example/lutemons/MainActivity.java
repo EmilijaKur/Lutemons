@@ -3,6 +3,7 @@ package com.example.lutemons;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     Button btnCreate, btnTrain, btnBattle, btnHome;
+    ImageView imgBattle, imgHome, imgTrain, imgCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         btnTrain=findViewById(R.id.TrainButton);
         btnBattle=findViewById(R.id.BattleButton);
         btnHome=findViewById(R.id.HomeButton);
+        imgCreate=findViewById(R.id.imageView2);
+        imgBattle=findViewById(R.id.imageView4);
+        imgHome=findViewById(R.id.imageView5);
+        imgTrain=findViewById(R.id.imageView3);
 
         btnCreate.setOnClickListener(v -> startActivity(new Intent(this, CreateLutemonActivity.class)));
         btnHome.setOnClickListener(v -> startActivity(new Intent(this, HomeActivity.class)));

@@ -34,9 +34,6 @@ public class HomeActivity extends AppCompatActivity {
         btnStartBattle.setOnClickListener(v -> {
             ArrayList<Lutemon> battleLutemons = Storage.getInstance().getLutemonsByLocation("battle");
             if (battleLutemons.size() == 2) {
-
-
-
                 Intent intent = new Intent(this, BattleActivity.class);
                 intent.putExtra("lutemon1_name", battleLutemons.get(0).getName());
                 intent.putExtra("lutemon2_name", battleLutemons.get(1).getName());

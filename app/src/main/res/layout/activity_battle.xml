@@ -15,10 +15,11 @@
             android:id="@+id/titleBattle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
             android:text="BATTLE ARENA"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:textColor="#000000"
+            android:textSize="34sp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -129,6 +130,7 @@
                 android:id="@+id/btnAttack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#D7605F"
                 android:text="Next attack"
                 app:cornerRadius="0dp" />
 
@@ -137,6 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:backgroundTint="#D7605F"
                 android:text="Back"
                 app:cornerRadius="0dp" />
         </LinearLayout>
