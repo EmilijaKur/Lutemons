@@ -1,7 +1,9 @@
 package com.example.lutemons;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lutemons.adapter.HomeLutemonAdapter;
 import com.example.lutemons.logic.Storage;
+import com.example.lutemons.model.Lutemon;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -24,6 +29,23 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         Button btnBack = findViewById(R.id.buttonBackHome);
         btnBack.setOnClickListener(v -> finish());
+
+        Button btnStartBattle = findViewById(R.id.btnStartBattle);
+        btnStartBattle.setOnClickListener(v -> {
+            ArrayList<Lutemon> battleLutemons = Storage.getInstance().getLutemonsByLocation("battle");
+            if (battleLutemons.size() == 2) {
+
+                //adapter=new HomeLutemonAdapter(this, new ArrayList<>(Storage.getInstance().getLutemonsByLocation("home")));
+                //recyclerView.setAdapter(adapter);
+
+                Intent intent = new Intent(this, BattleActivity.class);
+                intent.putExtra("lutemon1_name", battleLutemons.get(0).getName());
+                intent.putExtra("lutemon2_name", battleLutemons.get(1).getName());
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Move exactly 2 Lutemons to battle arena first!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

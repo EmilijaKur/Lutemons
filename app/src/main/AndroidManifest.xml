@@ -31,6 +31,9 @@
         <activity
             android:name=".TrainActivity"
             android:exported="false"/>
+        <activity
+            android:name=".BattleActivity"
+            android:exported="false"/>
     </application>
 
 

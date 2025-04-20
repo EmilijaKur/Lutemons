@@ -40,6 +40,26 @@ public class TrainingLutemonAdapter extends RecyclerView.Adapter<TrainingLutemon
         holder.txtStats.setText("ATK: " + l.getAttackPower() + " | DEF: " + l.getDefense() +
                 "\nHP: " + l.getHealth() + "/" + l.getMaxHealth() +
                 " \nXP: " + l.getExperience());
+        switch (l.getColor().toLowerCase()){
+            case "white":
+                holder.itemBackground.setBackgroundColor(0xFFEDEDED);
+                break;
+            case "green":
+                holder.itemBackground.setBackgroundColor(0xFFABCB82);
+                break;
+            case "pink":
+                holder.itemBackground.setBackgroundColor(0xFFEB97C4);
+                break;
+            case "orange":
+                holder.itemBackground.setBackgroundColor(0xFFE3A97A);
+                break;
+            case "black":
+                holder.itemBackground.setBackgroundColor(0xFF757474);
+                break;
+            default:
+                holder.itemBackground.setBackgroundColor(0xFFFFFFFF);
+
+        }
 
         holder.imgLutemon.setImageResource(R.drawable.lutemon);
 
@@ -49,7 +69,8 @@ public class TrainingLutemonAdapter extends RecyclerView.Adapter<TrainingLutemon
             Toast.makeText(context, l.getName() + " trained! XP: " + l.getExperience(), Toast.LENGTH_SHORT).show();
             notifyItemChanged(position);
         });
-
+        holder.btnMoveToBattle.setVisibility(View.GONE);
+        
         holder.btnSendHome.setText("Send Home");
         holder.btnSendHome.setOnClickListener(v -> {
             l.setLocation("home");
@@ -68,7 +89,8 @@ public class TrainingLutemonAdapter extends RecyclerView.Adapter<TrainingLutemon
         TextView txtName, txtStats;
         ImageView imgLutemon;
         Button btnTrain;
-        Button btnSendHome;
+        Button btnSendHome, btnMoveToBattle;
+        View itemBackground;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +99,8 @@ public class TrainingLutemonAdapter extends RecyclerView.Adapter<TrainingLutemon
             imgLutemon = itemView.findViewById(R.id.imageLutemon);
             btnSendHome = itemView.findViewById(R.id.btnSendHome);
             btnTrain = itemView.findViewById(R.id.btnactionButton);
+            itemBackground=itemView.findViewById(R.id.itemBackground);
+            btnMoveToBattle = itemView.findViewById(R.id.btnMoveToBattle);
         }
     }
 }

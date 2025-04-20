@@ -37,4 +37,19 @@ public class Storage {
     public void removeLutemon(int id) {
         lutemonMap.remove(id);
     }
+    public void removeLutemonByName(String name){
+        Lutemon toRemove=null;
+        for(Lutemon l: lutemonMap.values()){
+            if(l.getName().equals(name)){
+                toRemove=l;
+                break;
+            }
+        }
+        if (toRemove!=null){
+            lutemonMap.remove(toRemove.getId());
+        }
+    }
+    public void updateLutemon(Lutemon l) {
+        lutemonMap.put(l.getId(), l);
+    }
 }

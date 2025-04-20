@@ -34,13 +34,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Train" />
+            android:text="Train"
+            app:cornerRadius="0dp" />
+
+        <Button
+            android:id="@+id/btnMoveToBattle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Move to Battle"
+            app:cornerRadius="0dp" />
 
         <Button
             android:id="@+id/btnSendHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            app:cornerRadius="0dp"
             tools:text="Send Home" />
 
     </LinearLayout>
